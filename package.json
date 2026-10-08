@@ -42,7 +42,7 @@
     "sanity:typegen": "sanity schema extract --path=./schema.json --force && sanity typegen generate"
   },
   "publishConfig": {
-    "access": "restricted"
+    "access": "public"
   },
   "dependencies": {
     "@portabletext/react": "6.2.0",
@@ -64,5 +64,9 @@
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.1.7",
     "typescript": "^5.9.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NomanHameed/cmg-core.git"
   }
 }
