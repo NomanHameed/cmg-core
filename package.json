@@ -1,0 +1,44 @@
+{
+  "name": "@cmg/core",
+  "version": "1.0.0",
+  "description": "Core Next.js and Sanity functionality for Cosmetic Media Group",
+  "type": "module",
+  "license": "UNLICENSED",
+  "engines": {"node": ">=20.9.0"},
+  "files": ["dist", "README.md"],
+  "sideEffects": ["**/*.css"],
+  "exports": {
+    ".": {"types": "./dist/src/index.d.ts", "import": "./dist/src/index.js", "default": "./dist/src/index.js"},
+    "./styles.css": "./dist/src/styles.css",
+    "./types": {"types": "./dist/src/types.d.ts", "default": "./dist/src/types.js"},
+    "./sanity/schemaTypes": {"types": "./dist/src/sanity/schemaTypes/index.d.ts", "default": "./dist/src/sanity/schemaTypes/index.js"},
+    "./*": {"types": "./dist/src/*.d.ts", "import": "./dist/src/*.js", "default": "./dist/src/*.js"}
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node scripts/copy-assets.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "prepack": "npm run build"
+  },
+  "publishConfig": {"access": "restricted"},
+  "dependencies": {
+    "@portabletext/react": "6.2.0",
+    "@sanity/image-url": "2.1.1",
+    "@sanity/client": "7.23.2",
+    "@sanity/vision": "6.5.0",
+    "zod": "4.4.3"
+  },
+  "peerDependencies": {
+    "next": "^16.2.11",
+    "next-sanity": "^13.1.4",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "sanity": "^6.5.0",
+    "styled-components": "^6.1.19"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.15",
+    "@types/react": "^19.1.9",
+    "@types/react-dom": "^19.1.7",
+    "typescript": "^5.9.2"
+  }
+}
