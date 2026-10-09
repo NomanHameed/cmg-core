@@ -91,7 +91,6 @@ export function SiteHeader({navigation, services}: {navigation: Navigation; serv
             {/* Media Hub is hidden from navigation for now (client, 8-10) — the page stays reachable by URL. */}
             <Link href="/diamond-awards">Diamond Awards</Link>
             <Link href="/our-brands">Our Brands</Link>
-            <Link href="/toolkits">Toolkits</Link>
             <Link href="/membership">Membership</Link>
           </nav>
           <div className="header-actions">
@@ -120,7 +119,6 @@ export function SiteHeader({navigation, services}: {navigation: Navigation; serv
           <Link href="/media-desk">Media Desk</Link>
           <Link href="/diamond-awards">Diamond Awards</Link>
           <Link href="/our-brands">Our Brands</Link>
-          <Link href="/toolkits">Toolkits</Link>
           <Link href="/membership">Membership</Link>
           <Link href="/contact">Contact</Link>
         </div>
