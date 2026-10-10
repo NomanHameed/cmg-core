@@ -680,6 +680,19 @@ export type Homepage = {
     _key: string;
   }>;
   publications?: Array<string>;
+  featuredPublications?: Array<{
+    name?: string;
+    logo?: {
+      asset?: SanityImageAssetReference;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    _type: "featuredPublication";
+    _key: string;
+  }>;
   clientLogos?: Array<{
     name?: string;
     logo?: {
@@ -1195,7 +1208,7 @@ export type MEMBERSHIP_PAGE_QUERY_RESULT = {
 
 // Source: src/sanity/lib/queries.ts
 // Variable: HOMEPAGE_QUERY
-// Query: *[_type == "homepage"][0]{  heroEyebrowLeft, heroEyebrowRight, heroTitleBefore, heroTitleAccent,  heroIdentity, heroSummary, "heroImage": heroImage{..., "asset": asset->{_id,_ref,url}},  heroImageCaption, heroImageMeta,  "heroFilm": heroFilm[]{..., "asset": asset->{_id,_ref,url}},  heroVideoUrl, heroFilmBadge,  storyHeading, storyOpening, storyBody,  stats, credibilityFacts, publications,  clientLogos[]{name, "image": logo{..., "asset": asset->{_id,_ref,url}}},  latestRail, brandRail, resourceTiles,  "founderFilm": founderFilm[]{..., "asset": asset->{_id,_ref,url}},  cprEyebrow, cprHeading, cprAccent, cprIntro, cprStatusChips,  cprCards[]{label, title, text, ctaLabel, "image": image{..., "asset": asset->{_id,_ref,url}}},  sections[]{sectionType,enabled}, seo,  featuredArticles[]->{_id,title,"slug":slug.current,excerpt,category,format,publishedAt,readingTime,featured,    "image": image{..., "asset": asset->{_id,_ref,url}}, externalVideoUrl,    author->{name,"slug":slug.current,role,bio,"image":image{...,"asset":asset->{_id,_ref,url}}}  },  featuredServices[]->{_id,title,"slug":slug.current,eyebrow,intro,body,outcomes,deliverables,order,    "image":image{...,"asset":asset->{_id,_ref,url}}},  featuredBrands[]->{title,"slug":slug.current,type,description,href,external,order,    "image":image{...,"asset":asset->{_id,_ref,url}}},  featuredToolkits[]->{title,"slug":slug.current,type,description,access,coverStyle,externalUrl,    "fileUrl":downloadFile.asset->url}}
+// Query: *[_type == "homepage"][0]{  heroEyebrowLeft, heroEyebrowRight, heroTitleBefore, heroTitleAccent,  heroIdentity, heroSummary, "heroImage": heroImage{..., "asset": asset->{_id,_ref,url}},  heroImageCaption, heroImageMeta,  "heroFilm": heroFilm[]{..., "asset": asset->{_id,_ref,url}},  heroVideoUrl, heroFilmBadge,  storyHeading, storyOpening, storyBody,  stats, credibilityFacts, publications,  featuredPublications[]{name, "image": logo{..., "asset": asset->{_id,_ref,url}}},  clientLogos[]{name, "image": logo{..., "asset": asset->{_id,_ref,url}}},  latestRail, brandRail, resourceTiles,  "founderFilm": founderFilm[]{..., "asset": asset->{_id,_ref,url}},  cprEyebrow, cprHeading, cprAccent, cprIntro, cprStatusChips,  cprCards[]{label, title, text, ctaLabel, "image": image{..., "asset": asset->{_id,_ref,url}}},  sections[]{sectionType,enabled}, seo,  featuredArticles[]->{_id,title,"slug":slug.current,excerpt,category,format,publishedAt,readingTime,featured,    "image": image{..., "asset": asset->{_id,_ref,url}}, externalVideoUrl,    author->{name,"slug":slug.current,role,bio,"image":image{...,"asset":asset->{_id,_ref,url}}}  },  featuredServices[]->{_id,title,"slug":slug.current,eyebrow,intro,body,outcomes,deliverables,order,    "image":image{...,"asset":asset->{_id,_ref,url}}},  featuredBrands[]->{title,"slug":slug.current,type,description,href,external,order,    "image":image{...,"asset":asset->{_id,_ref,url}}},  featuredToolkits[]->{title,"slug":slug.current,type,description,access,coverStyle,externalUrl,    "fileUrl":downloadFile.asset->url}}
 export type HOMEPAGE_QUERY_RESULT = {
   heroEyebrowLeft: string | null;
   heroEyebrowRight: string | null;
@@ -1246,6 +1259,21 @@ export type HOMEPAGE_QUERY_RESULT = {
     _key: string;
   }> | null;
   publications: Array<string> | null;
+  featuredPublications: Array<{
+    name: string | null;
+    image: {
+      asset: {
+        _id: string;
+        _ref: null;
+        url: string | null;
+      } | null;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    } | null;
+  }> | null;
   clientLogos: Array<{
     name: string | null;
     image: {
@@ -2021,13 +2049,13 @@ export type DIAMOND_AWARDS_QUERY_RESULT = {
 
 // Query TypeMap
 import "@sanity/client";
-declare module "@sanity/client" {
+declare global {
   interface SanityQueries {
     '*[_type == "siteSettings"][0]{\n  title, tagline, description, email, phone, locations, socialLinks, legalLinks,\n  "logo": logo{..., "asset": asset->{_id,_ref,url}}, seo\n}': SITE_SETTINGS_QUERY_RESULT;
     '*[_type == "aboutPage"][0]{\n  heroTitle, heroAccent, intro, stats,\n  evolutionEyebrow, evolutionHeading, evolutionBody, quote, closingNote,\n  principlesEyebrow, principlesHeading, principlesIntro, principles, seo,\n  "image": image{..., "asset": asset->{_id,_ref,url}}\n}': ABOUT_PAGE_QUERY_RESULT;
     '*[_type == "cosmeticPrPage"][0]{\n  heroEyebrow, heroTitle, heroAccent, heroIntro, heroBody,\n  "heroImage": heroImage{..., "asset": asset->{_id,_ref,url}},\n  heroCaption, heroCaptionMeta, identityStrip,\n  storyEyebrow, storySideHeading, storySideText, storyHeading, storyAccent, storyBody,\n  capabilitiesEyebrow, capabilitiesNote, capabilitiesHeading, capabilities,\n  casesEyebrow, casesHeading, cases,\n  testimonialsEyebrow, testimonialsHeading, testimonials,\n  publicationsEyebrow, publicationsHeading, publicationsIntro, publications,\n  summaryEyebrow, summaryHeading, summaryBody, summaryPoints,\n  newsletterEyebrow, newsletterHeading, newsletterText, seo\n}': COSMETIC_PR_PAGE_QUERY_RESULT;
     '*[_type == "membershipPage"][0]{\n  comingSoonLabel, heroTitle, heroAccent, intro,\n  benefitsEyebrow, benefitsHeading, benefitsIntro, benefits, seo\n}': MEMBERSHIP_PAGE_QUERY_RESULT;
-    '*[_type == "homepage"][0]{\n  heroEyebrowLeft, heroEyebrowRight, heroTitleBefore, heroTitleAccent,\n  heroIdentity, heroSummary, "heroImage": heroImage{..., "asset": asset->{_id,_ref,url}},\n  heroImageCaption, heroImageMeta,\n  "heroFilm": heroFilm[]{..., "asset": asset->{_id,_ref,url}},\n  heroVideoUrl, heroFilmBadge,\n  storyHeading, storyOpening, storyBody,\n  stats, credibilityFacts, publications,\n  clientLogos[]{name, "image": logo{..., "asset": asset->{_id,_ref,url}}},\n  latestRail, brandRail, resourceTiles,\n  "founderFilm": founderFilm[]{..., "asset": asset->{_id,_ref,url}},\n  cprEyebrow, cprHeading, cprAccent, cprIntro, cprStatusChips,\n  cprCards[]{label, title, text, ctaLabel, "image": image{..., "asset": asset->{_id,_ref,url}}},\n  sections[]{sectionType,enabled}, seo,\n  featuredArticles[]->{_id,title,"slug":slug.current,excerpt,category,format,publishedAt,readingTime,featured,\n    "image": image{..., "asset": asset->{_id,_ref,url}}, externalVideoUrl,\n    author->{name,"slug":slug.current,role,bio,"image":image{...,"asset":asset->{_id,_ref,url}}}\n  },\n  featuredServices[]->{_id,title,"slug":slug.current,eyebrow,intro,body,outcomes,deliverables,order,\n    "image":image{...,"asset":asset->{_id,_ref,url}}},\n  featuredBrands[]->{title,"slug":slug.current,type,description,href,external,order,\n    "image":image{...,"asset":asset->{_id,_ref,url}}},\n  featuredToolkits[]->{title,"slug":slug.current,type,description,access,coverStyle,externalUrl,\n    "fileUrl":downloadFile.asset->url}\n}': HOMEPAGE_QUERY_RESULT;
+    '*[_type == "homepage"][0]{\n  heroEyebrowLeft, heroEyebrowRight, heroTitleBefore, heroTitleAccent,\n  heroIdentity, heroSummary, "heroImage": heroImage{..., "asset": asset->{_id,_ref,url}},\n  heroImageCaption, heroImageMeta,\n  "heroFilm": heroFilm[]{..., "asset": asset->{_id,_ref,url}},\n  heroVideoUrl, heroFilmBadge,\n  storyHeading, storyOpening, storyBody,\n  stats, credibilityFacts, publications,\n  featuredPublications[]{name, "image": logo{..., "asset": asset->{_id,_ref,url}}},\n  clientLogos[]{name, "image": logo{..., "asset": asset->{_id,_ref,url}}},\n  latestRail, brandRail, resourceTiles,\n  "founderFilm": founderFilm[]{..., "asset": asset->{_id,_ref,url}},\n  cprEyebrow, cprHeading, cprAccent, cprIntro, cprStatusChips,\n  cprCards[]{label, title, text, ctaLabel, "image": image{..., "asset": asset->{_id,_ref,url}}},\n  sections[]{sectionType,enabled}, seo,\n  featuredArticles[]->{_id,title,"slug":slug.current,excerpt,category,format,publishedAt,readingTime,featured,\n    "image": image{..., "asset": asset->{_id,_ref,url}}, externalVideoUrl,\n    author->{name,"slug":slug.current,role,bio,"image":image{...,"asset":asset->{_id,_ref,url}}}\n  },\n  featuredServices[]->{_id,title,"slug":slug.current,eyebrow,intro,body,outcomes,deliverables,order,\n    "image":image{...,"asset":asset->{_id,_ref,url}}},\n  featuredBrands[]->{title,"slug":slug.current,type,description,href,external,order,\n    "image":image{...,"asset":asset->{_id,_ref,url}}},\n  featuredToolkits[]->{title,"slug":slug.current,type,description,access,coverStyle,externalUrl,\n    "fileUrl":downloadFile.asset->url}\n}': HOMEPAGE_QUERY_RESULT;
     '*[_type == "service"] | order(order asc, title asc){\n  _id,title,"slug":slug.current,eyebrow,intro,listDescription,listCta,detailIntro,body,outcomes,deliverables,order,seo,\n  "image":image{...,"asset":asset->{_id,_ref,url}}\n}': SERVICES_QUERY_RESULT;
     '*[_type == "service" && slug.current == $slug][0]{\n  _id,title,"slug":slug.current,eyebrow,intro,listDescription,listCta,detailIntro,body,outcomes,deliverables,order,seo,\n  "image":image{...,"asset":asset->{_id,_ref,url}}\n}': SERVICE_QUERY_RESULT;
     '*[_type == "article" && defined(slug.current)] | order(publishedAt desc){\n  _id,title,"slug":slug.current,excerpt,category,format,publishedAt,readingTime,featured,externalVideoUrl,seo,\n  "image":image{...,"asset":asset->{_id,_ref,url}},\n  author->{name,"slug":slug.current,role,bio,"image":image{...,"asset":asset->{_id,_ref,url}}}\n}': ARTICLES_QUERY_RESULT;
@@ -2043,4 +2071,8 @@ declare module "@sanity/client" {
     '*[_type == "videoGallery" && slug.current == $slug][0]{\n  title, "slug": slug.current, category, intro, order,\n  "poster": poster{..., "asset": asset->{_id,_ref,url}},\n  videos[]{heading, url, caption}, seo\n}': VIDEO_QUERY_RESULT;
     '*[_type == "diamondAwards"][0]{\n  eventName,date,venue,location,history,mission,missionPoints,audience,eventExperience,sponsorBenefits,\n  sponsorshipPackages,contactEmail,contactPhoneUae,contactPhoneUk,seo,\n  "heroImage":heroImage{...,"asset":asset->{_id,_ref,url}},\n  "historyImage":historyImage{...,"asset":asset->{_id,_ref,url}},\n  "missionImage":missionImage{...,"asset":asset->{_id,_ref,url}},\n  "whyDubaiImage":whyDubaiImage{...,"asset":asset->{_id,_ref,url}},\n  "sponsorImage":sponsorImage{...,"asset":asset->{_id,_ref,url}},\n  "experienceImage":experienceImage{...,"asset":asset->{_id,_ref,url}},\n  "contactImage":contactImage{...,"asset":asset->{_id,_ref,url}}\n}': DIAMOND_AWARDS_QUERY_RESULT;
   }
+}
+// Lets @sanity/client releases that predate the global registry read it too
+declare module "@sanity/client" {
+  interface SanityQueries extends globalThis.SanityQueries {}
 }

@@ -12,9 +12,7 @@ type MenuName = 'about' | 'services' | null
 export function SiteHeader({navigation, services}: {navigation: Navigation; services: FooterNavItem[]}) {
   const [open, setOpen] = useState<MenuName>(null)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [toast, setToast] = useState('')
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const pathname = usePathname()
 
   const aboutLinks = navigation.about.links
@@ -67,12 +65,6 @@ export function SiteHeader({navigation, services}: {navigation: Navigation; serv
     closeTimer.current = setTimeout(() => setOpen(null), 130)
   }
 
-  function showToast(message: string) {
-    if (toastTimer.current) clearTimeout(toastTimer.current)
-    setToast(message)
-    toastTimer.current = setTimeout(() => setToast(''), 3000)
-  }
-
   return (
     <>
       <header>
@@ -94,8 +86,6 @@ export function SiteHeader({navigation, services}: {navigation: Navigation; serv
             <Link href="/membership">Membership</Link>
           </nav>
           <div className="header-actions">
-            {/* Future search control — connects to editorial/CMS search in a later phase (client feedback, V21). */}
-            <button className="search-btn" type="button" aria-label="Search" onClick={() => showToast('Search is coming soon.')}>⌕</button>
             <Link className="btn btn-dark header-conversation" href="/contact">Start a conversation <span><Arrow /></span></Link>
             <button className="menu-btn" type="button" onClick={() => setMobileOpen(true)} aria-label="Open menu">☰</button>
           </div>
@@ -123,7 +113,6 @@ export function SiteHeader({navigation, services}: {navigation: Navigation; serv
           <Link href="/contact">Contact</Link>
         </div>
       </div>
-      <div className={`toast ${toast ? 'show' : ''}`} role="status">{toast}</div>
     </>
   )
 }

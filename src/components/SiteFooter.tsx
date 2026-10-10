@@ -17,15 +17,6 @@ export function SiteFooter({settings, services}: {settings: SiteSettings; servic
         </div>
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} Cosmetic Media Group.</span>
-          {settings.legalLinks?.length ? (
-            <span className="footer-legal">
-              {settings.legalLinks.map((link, index) => (
-                <span key={link.label}>{index > 0 && ' · '}<a href={link.url}>{link.label}</a></span>
-              ))}
-            </span>
-          ) : (
-            <span>Privacy · Terms · Accessibility</span>
-          )}
         </div>
       </div>
     </footer>

@@ -27,7 +27,7 @@ export function HomeSections({homepage, services, articles, brands, toolkits}: {
   return <>{homepage.sectionOrder.map((section) => renderers[section])}</>
 }
 
-function ProofBands({publications, logos}: {publications: string[]; logos: Homepage['clientLogos']}) {
+function ProofBands({publications, logos}: {publications: Homepage['publications']; logos: Homepage['clientLogos']}) {
   return <section className="cmg-proof-bands" aria-label="Credibility and social proof"><div className="cmg-featured-marquee"><div className="shell cmg-marquee-label"><span>As featured in</span><small>Publication list to be confirmed before launch</small></div><div className="cmg-logo-marquee" aria-label="Selected media publications"><div className="cmg-logo-track"><PublicationSet publications={publications} /><PublicationSet publications={publications} hidden /></div></div></div><div className="cmg-trusted-panel"><div className="shell"><div className="cmg-marquee-label cmg-trusted-head"><span>Trusted by leading clinics, doctors &amp; brands</span><small>Approved client and partner logos to replace placeholders</small></div><div className="cmg-trusted-grid">{logos.map((logo) => <div className="cmg-trusted-card" key={logo.name}>{logo.image ? <Image src={imageUrl(logo.image, 320)} alt={imageAlt(logo.image, logo.name)} width={160} height={60} sizes="150px" /> : <><b>{logo.name}</b><small>{/partner/i.test(logo.name) ? 'Partner logo' : 'Client logo'}</small></>}</div>)}</div></div></div></section>
 }
 
@@ -42,8 +42,14 @@ function Credibility({homepage}: {homepage: Homepage}) {
   return <section className="cmg-credibility" id="credibility"><div className="shell"><div className="cmg-credibility-head"><div><div className="cmg-section-no">By the numbers</div><h2>Authority built over two decades.</h2></div><p className="cmg-credibility-note">Selected figures are shown for design purposes and will be confirmed by the client before launch.</p></div><CounterStrip stats={homepage.stats} /><div className="cmg-credibility-facts">{facts.map(({label, title}) => <div className="cmg-credibility-fact" key={`${label}-${title}`}><small>{label}</small><b>{title}</b></div>)}</div></div></section>
 }
 
-function PublicationSet({publications, hidden}: {publications: string[]; hidden?: boolean}) {
-  return <div className="cmg-logo-set" aria-hidden={hidden}>{publications.map((publication, index) => <span key={`${publication}-${index}`} className={publicationClass(publication)}>{publication}</span>)}</div>
+function PublicationSet({publications, hidden}: {publications: Homepage['publications']; hidden?: boolean}) {
+  return <div className="cmg-logo-set" aria-hidden={hidden}>{publications.map((publication, index) => {
+    const name = typeof publication === 'string' ? publication : publication.name
+    const logo = typeof publication === 'string' ? undefined : publication.image
+    return logo
+      ? <Image className="cmg-publication-logo" key={`${name}-${index}`} src={imageUrl(logo, 360)} alt={hidden ? '' : imageAlt(logo, name)} width={180} height={64} sizes="(max-width: 600px) 140px, 180px" />
+      : <span key={`${name}-${index}`} className={publicationClass(name)}>{name}</span>
+  })}</div>
 }
 
 function publicationClass(name: string) {

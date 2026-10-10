@@ -271,7 +271,12 @@ export async function getHomepage(): Promise<Homepage> {
     },
     stats: stats?.length ? stats : fallbackHomepage.stats,
     credibilityFacts: data.credibilityFacts?.length ? data.credibilityFacts.map((f) => ({label: f.label ?? '', title: f.title ?? ''})) : fallbackHomepage.credibilityFacts,
-    publications: data.publications?.length ? data.publications : fallbackHomepage.publications,
+    publications: data.featuredPublications?.some((publication) => publication.name?.trim())
+      ? data.featuredPublications.flatMap((publication) => {
+          const name = publication.name?.trim()
+          return name ? [{name, image: toImage(publication.image)}] : []
+        })
+      : data.publications?.length ? data.publications : fallbackHomepage.publications,
     clientLogos: data.clientLogos?.length ? data.clientLogos.map((l) => ({name: l.name ?? '', image: toImage(l.image)})) : fallbackHomepage.clientLogos,
     latestRail: data.latestRail?.length
       ? data.latestRail.flatMap((item) => (item.label && item.title ? [{label: item.label, title: item.title, actionLabel: item.actionLabel ?? undefined, href: item.href ?? undefined}] : []))

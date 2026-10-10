@@ -48,7 +48,23 @@ export const homepage = defineType({
     defineField({name: 'storyBody', title: 'Story body', type: 'portableText', group: 'story'}),
     defineField({name: 'stats', title: 'By the numbers', type: 'array', of: [defineArrayMember({type: 'stat'})], group: 'credibility'}),
     defineField({name: 'credibilityFacts', title: 'Credibility facts', type: 'array', of: [{type: 'object', fields: [{name: 'label', type: 'string'}, {name: 'title', type: 'string'}], preview: {select: {title: 'title', subtitle: 'label'}}}], group: 'credibility'}),
-    defineField({name: 'publications', title: 'As featured in', type: 'array', of: [{type: 'string'}], group: 'credibility'}),
+    defineField({name: 'publications', title: 'As featured in — text list', description: 'Existing publication names. Used when the names and logos list below is empty.', type: 'array', of: [{type: 'string'}], group: 'credibility'}),
+    defineField({
+      name: 'featuredPublications',
+      title: 'As featured in — names and logos',
+      description: 'Optional replacement for the text list above. Drag entries to reorder. Upload a logo or leave it empty to show the publication name. Logos appear on a dark background.',
+      type: 'array',
+      of: [defineArrayMember({
+        name: 'featuredPublication',
+        type: 'object',
+        fields: [
+          defineField({name: 'name', title: 'Publication name', type: 'string', validation: (rule) => rule.required()}),
+          defineField({name: 'logo', title: 'Logo (optional)', type: 'image', fields: [{name: 'alt', title: 'Alternative text', type: 'string'}]})
+        ],
+        preview: {select: {title: 'name', media: 'logo'}}
+      })],
+      group: 'credibility'
+    }),
     defineField({name: 'clientLogos', title: 'Client and partner logos', type: 'array', of: [{type: 'object', fields: [{name: 'name', type: 'string'}, {name: 'logo', type: 'image', options: {hotspot: true}, fields: [{name: 'alt', type: 'string'}]}], preview: {select: {title: 'name', media: 'logo'}}}], group: 'credibility'}),
     defineField({name: 'featuredArticles', title: 'Featured Media Hub content', type: 'array', of: [{type: 'reference', to: [{type: 'article'}]}], validation: (rule) => rule.max(3), group: 'content'}),
     defineField({name: 'featuredServices', title: 'Featured services', type: 'array', of: [{type: 'reference', to: [{type: 'service'}]}], group: 'content'}),

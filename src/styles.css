@@ -854,8 +854,18 @@
       .cmg-founder-teaser-copy h2{font-size:52px}
       .cmg-media-desk-teaser{padding:64px 0}
       .cmg-services .cmg-service-row{grid-template-columns:44px 1fr 32px;gap:14px}
-      .cmg-services .cmg-service-row h3{font-size:31px}
-      .cmg-services .cmg-service-row p{grid-column:2/4;font-size:13px}
+      .cmg-services .cmg-service-row .no{grid-column:1;grid-row:1}
+      .cmg-services .cmg-service-row h3{grid-column:2;grid-row:1;font-size:31px}
+      .cmg-services .cmg-service-row .go{grid-column:3;grid-row:1}
+      .cmg-services .cmg-service-row p{grid-column:2/4;grid-row:2;font-size:13px}
+      .cmg-services-foot{flex-wrap:wrap;gap:20px}
+      .cmg-services-foot small{flex:1 1 140px}
+      .cmg-services-foot .btn{flex-shrink:0;white-space:nowrap}
+      .cmg-brands .cmg-brand-line{grid-template-columns:minmax(0,1fr) 30px}
+      .cmg-brands .cmg-brand-line > span{grid-column:1;grid-row:1}
+      .cmg-brands .cmg-brand-line > h3{grid-column:1;grid-row:2}
+      .cmg-brands .cmg-brand-line > p{grid-column:1/-1;grid-row:3}
+      .cmg-brands .cmg-brand-line > b{grid-column:2;grid-row:1/3;align-self:center;justify-self:end}
       .cmg-membership-feature{padding:28px;min-height:520px}
       .cmg-membership-feature h2{font-size:48px}
       .homepage-waitlist{grid-template-columns:1fr}
@@ -972,6 +982,7 @@
     .cmg-logo-track{display:flex;width:max-content;animation:cmgLogoScroll 34s linear infinite;will-change:transform}
     .cmg-logo-set{display:flex;align-items:center;gap:72px;padding-right:72px}
     .cmg-logo-set span{white-space:nowrap;color:#fff;opacity:.92;line-height:1}
+    .cmg-publication-logo{display:block;flex-shrink:0;width:180px;height:64px;object-fit:contain}
     .cmg-logo-vogue{font-family:"Newsreader",Georgia,serif;font-size:35px;letter-spacing:.04em}
     .cmg-logo-grazia{font-family:"DM Sans",Arial,sans-serif;font-size:27px;font-weight:700;letter-spacing:.12em}
     .cmg-logo-bazaar{font-family:"Newsreader",Georgia,serif;font-size:29px;letter-spacing:.02em}
@@ -1000,6 +1011,7 @@
       .cmg-credibility-fact{min-height:120px;padding:23px 22px}
       .cmg-marquee-label{align-items:flex-start;flex-direction:column;gap:8px}
       .cmg-logo-set{gap:48px;padding-right:48px}
+      .cmg-publication-logo{width:140px;height:50px}
       .cmg-logo-vogue{font-size:30px}.cmg-logo-grazia,.cmg-logo-bazaar,.cmg-logo-marie,.cmg-logo-mail,.cmg-logo-times{font-size:25px}.cmg-logo-cosmo{font-size:21px}
     }
     @media(prefers-reduced-motion:reduce){.cmg-logo-track{animation:none}.cmg-logo-marquee{overflow-x:auto;mask-image:none;-webkit-mask-image:none}}

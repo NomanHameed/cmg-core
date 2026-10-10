@@ -1,6 +1,6 @@
-# @nomanbutt/cmg-core
+# @nomanhameed/cmg-core
 
-Core package for the Cosmetic Media Group Next.js application. Owned by the npm account `nomanbutt`.
+Core package for the Cosmetic Media Group Next.js application. Owned by the npm account `nomanhameed`.
 
 The package contains page and layout implementations, shared React components, Sanity schemas and Studio configuration, content queries and loaders, fallback data, forms API handlers, metadata and global styles. The Next.js application retains thin route exports, configuration, environment variables and public assets.
 
@@ -13,13 +13,13 @@ npm install
 npm run build
 npm pack
 cd ../cosmetic-media-group
-npm install ../cmg-core/nomanbutt-cmg-core-1.0.0.tgz
+npm install ../cmg-core/nomanhameed-cmg-core-1.0.2.tgz
 npm run dev
 ```
 
-Use the tarball filename reported by `npm pack` after changing the name or version. Rebuild, repack and reinstall after source changes. The build emits ESM JavaScript and declarations in `dist` for each module. Package exports retain module paths, for example `@nomanbutt/cmg-core/data/fallback` and `@nomanbutt/cmg-core/studio/config`.
+Use the tarball filename reported by `npm pack` after changing the name or version. Rebuild, repack and reinstall after source changes. The build emits ESM JavaScript and declarations in `dist` for each module. Package exports retain module paths, for example `@nomanhameed/cmg-core/data/fallback` and `@nomanhameed/cmg-core/studio/config`.
 
-Configure the consuming Next.js app with `transpilePackages: ['@nomanbutt/cmg-core']`. Its root layout imports `@nomanbutt/cmg-core/styles.css`. Keep its `public` directory: images, fonts and other assets referenced by absolute URL are served by the app.
+Configure the consuming Next.js app with `transpilePackages: ['@nomanhameed/cmg-core']`. Its root layout imports `@nomanhameed/cmg-core/styles.css`. Keep its `public` directory: images, fonts and other assets referenced by absolute URL are served by the app.
 
 Environment variables remain in the app's `.env.local` and deployment environment. They include `NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET`, `NEXT_PUBLIC_SANITY_API_VERSION`, `NEXT_PUBLIC_SITE_URL`, optional `SANITY_API_READ_TOKEN` and `SANITY_API_WRITE_TOKEN`, analytics configuration and form webhook settings. Never bundle secrets into this package. Studio authentication and Sanity permissions still belong to the configured Sanity project.
 
@@ -34,7 +34,7 @@ npm pack --dry-run
 npm publish --access public
 ```
 
-Follow npm's authentication prompts. CI publishing credentials belong in the CI secret store. Once published, run `npm install @nomanbutt/cmg-core@1.0.0` in the app, then commit its updated package.json and lockfile.
+Follow npm's authentication prompts. CI publishing credentials belong in the CI secret store. Once published, run `npm install @nomanhameed/cmg-core@1.0.2` in the app, then commit its updated package.json and lockfile.
 
 To make the scoped package private later, upgrade to a paid npm plan and change Package Access in its npm settings. Update `publishConfig.access` to `restricted` for future releases and make the GitHub repository private as well if source access should be restricted. Existing downloaded copies remain usable. See https://docs.npmjs.com/changing-package-visibility/.
 
@@ -44,8 +44,12 @@ To make the scoped package private later, upgrade to a paid npm plan and change 
 
 ## Public module boundaries
 
-Import client components individually from `@nomanbutt/cmg-core/components/<name>` and server loaders from `@nomanbutt/cmg-core/lib/content`. Page entries live under `@nomanbutt/cmg-core/pages/*`; the form handler is `@nomanbutt/cmg-core/server/forms`. Avoid importing server loaders into client components. The build preserves each module's `use client` directive.
+Import client components individually from `@nomanhameed/cmg-core/components/<name>` and server loaders from `@nomanhameed/cmg-core/lib/content`. Page entries live under `@nomanhameed/cmg-core/pages/*`; the form handler is `@nomanhameed/cmg-core/server/forms`. Avoid importing server loaders into client components. The build preserves each module's `use client` directive.
 
 ## Git hosting
 
 Git hosting is optional for npm publishing. Keep this source in a separate private Git repository for version history and recovery. Commit source, configuration, README and the generated type snapshot; `.gitignore` excludes dependencies, build output, tarballs and environment files.
+
+## Publication logos
+
+In Studio, open Homepage → Credibility → As featured in — names and logos. Add each publication name and an optional logo, then publish. Entries without a logo display their name. An empty list preserves the existing text list. Use logos suitable for the strip’s dark background.

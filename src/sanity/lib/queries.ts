@@ -38,6 +38,7 @@ export const HOMEPAGE_QUERY = defineQuery(`*[_type == "homepage"][0]{
   heroVideoUrl, heroFilmBadge,
   storyHeading, storyOpening, storyBody,
   stats, credibilityFacts, publications,
+  featuredPublications[]{name, "image": logo{..., "asset": asset->{_id,_ref,url}}},
   clientLogos[]{name, "image": logo{..., "asset": asset->{_id,_ref,url}}},
   latestRail, brandRail, resourceTiles,
   "founderFilm": founderFilm[]{..., "asset": asset->{_id,_ref,url}},

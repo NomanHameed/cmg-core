@@ -346,7 +346,7 @@ export type Homepage = {
   story?: {heading?: string; opening?: string; body?: PortableTextBlock[]}
   stats: Stat[]
   credibilityFacts?: Array<{label: string; title: string}>
-  publications: string[]
+  publications: Array<string | {name: string; image?: ImageValue}>
   clientLogos: Array<{name: string; image?: ImageValue}>
   latestRail?: LatestRailItem[]
   founderFilm?: ImageValue[]
