@@ -1098,11 +1098,12 @@
        founder presence, Cosmetic PR and live-media behaviour.
        ========================================================= */
 
-    /* Accommodate the new top-level Cosmetic PR navigation item. */
+    /* Keep desktop navigation readable while reserving room for the logo and CTA. */
     @media(min-width:1161px){
-      .header-inner{grid-template-columns:170px minmax(0,1fr) 250px}
-nav{gap:15px;font-size:10px}
-}
+      .header-inner{grid-template-columns:150px minmax(0,1fr) 200px;gap:16px}
+      header nav{gap:clamp(10px,1vw,18px);font-size:14px;letter-spacing:.025em}
+      header nav>a,header .nav-trigger{white-space:nowrap}
+    }
 /* Hero: slightly reduce media dominance and simulate the future looping film. */
     .cmg-cover-grid{grid-template-columns:minmax(0,1.08fr) minmax(400px,.92fr)}
 .cmg-cover-film{isolation:isolate}
