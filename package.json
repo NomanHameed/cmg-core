@@ -1,6 +1,6 @@
 {
   "name": "@nomanhameed/cmg-core",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Core Next.js and Sanity functionality for Cosmetic Media Group",
   "type": "module",
   "license": "UNLICENSED",

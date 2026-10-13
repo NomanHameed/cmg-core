@@ -13,7 +13,7 @@ npm install
 npm run build
 npm pack
 cd ../cosmetic-media-group
-npm install ../cmg-core/nomanhameed-cmg-core-1.0.2.tgz
+npm install ../cmg-core/nomanhameed-cmg-core-1.0.3.tgz
 npm run dev
 ```
 
@@ -34,7 +34,7 @@ npm pack --dry-run
 npm publish --access public
 ```
 
-Follow npm's authentication prompts. CI publishing credentials belong in the CI secret store. Once published, run `npm install @nomanhameed/cmg-core@1.0.2` in the app, then commit its updated package.json and lockfile.
+Follow npm's authentication prompts. CI publishing credentials belong in the CI secret store. Once published, run `npm install @nomanhameed/cmg-core@1.0.3` in the app, then commit its updated package.json and lockfile.
 
 To make the scoped package private later, upgrade to a paid npm plan and change Package Access in its npm settings. Update `publishConfig.access` to `restricted` for future releases and make the GitHub repository private as well if source access should be restricted. Existing downloaded copies remain usable. See https://docs.npmjs.com/changing-package-visibility/.
 
